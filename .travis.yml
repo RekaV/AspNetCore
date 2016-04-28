@@ -6,6 +6,7 @@ install:
   - dnvm upgrade
   - dnu restore
 script:
+  - gulp dnx-web
   - dnu build
   - dnx web
-  -dnx test
+  - dnx test
