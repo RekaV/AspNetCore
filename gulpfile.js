@@ -9,7 +9,7 @@ var gulp = require("gulp"),
     protractor = require('gulp-protractor').protractor,
     webdriver_standalone = require('gulp-protractor').webdriver_standalone,
     webdriver_update = require('gulp-protractor').webdriver_update,
-    Server = require('karma').Server;
+   Server = require('karma').Server;
     
 var mocha = require('gulp-mocha');
 var dnx = dnx = require("gulp-dnx");
@@ -17,7 +17,7 @@ var webserver = require('gulp-webserver');
 var exec = require('child_process').exec;
 
 var paths = {
-    webroot: "./wwwroot/"
+    webroot: "./src/EmployeeWebApi/wwwroot/"
 };
 
 var itoptions = {
@@ -41,7 +41,7 @@ var weboptions = {
     run: true,
     cwd: './src/EmployeeWebApi/'
 }
-var angularpath = { Scripts : "./Scripts/"};
+var angularpath = { Scripts : "./src/EmployeeWebApi/Scripts/"};
 
 paths.js = paths.webroot + "js/**/*.js";
 paths.minJs = paths.webroot + "js/**/*.min.js";
@@ -71,7 +71,7 @@ gulp.task("min:apjs", function () {
  */
 gulp.task('unittest', function (done) {
     new Server({
-        configFile: __dirname + '/karma.conf.js',
+        configFile: __dirname+'/src/EmployeeWebApi/karma.conf.js',
         singleRun: true
     }, done).start();
 });
@@ -82,7 +82,7 @@ gulp.task('unittest', function (done) {
  */
 gulp.task('tdd', function (done) {
     new Server({
-        configFile: __dirname + '/karma.conf.js'
+        configFile: __dirname + '/src/EmployeeWebApi/karma.conf.js'
     }, done).start();
 });
 
@@ -125,11 +125,11 @@ gulp.task("min:css", function () {
  **/
 gulp.task("mochatest", function () {
 
-    return gulp.src('../../test/EmployeeApiTest/spec/*.js', { read: false })
+    return gulp.src('./test/EmployeeApiTest/spec/*.js', { read: false })
         .pipe(mocha({
             reporter: 'mochawesome',
             reporterOptions: {
-                reportDir: '../../report/Clientside-Report/Integrationtest/',
+                reportDir: './report/Clientside-Report/Integrationtest/',
                 reportName: 'Report',
                 reportTitle: 'EmployeeApiReport',
                 inlineAssets: false
@@ -163,10 +163,10 @@ gulp.task('webdriver_standalone', webdriver_standalone);
  * Run Protractor end 2 end test
  * */
 gulp.task('e2e', ['webdriver_update'], function() {
-  gulp.src("./e2etest/spec/*.js")
+  gulp.src("./src/EmployeeWebApi/e2etest/spec/*.js")
     .pipe(protractor({
-      configFile: "./e2etest/Conf.js",
-      reportDir:"../../report/Clientside-Report/End2endtest/",
+      configFile: "./src/EmployeeWebApi/e2etest/Conf.js",
+      reportDir:"./report/Clientside-Report/End2endtest/",
       args: ['--baseUrl', 'http://localhost:8000/wwwroot/']
     }))    
   .on('error', function(e) { throw e })
