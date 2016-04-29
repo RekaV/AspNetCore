@@ -5,7 +5,12 @@ install:
   - curl -sSL https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.sh | DNX_BRANCH=dev sh && source ~/.dnx/dnvm/dnvm.sh
   - dnvm upgrade
   - dnu restore
+  - npm cache clean -f
+  - npm install -g n
+  - n stable
+  - npm update -g npm
 before_script:
+  - node -v
   - npm install 
 script:
   - gulp dnx-web
