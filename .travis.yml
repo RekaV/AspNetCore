@@ -6,10 +6,14 @@ install:
   - dnvm upgrade
   - dnu restore
   - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
-  - npm cache clean -f
-  - npm install -g n
-  - n stable
-  - npm update -g npm
+  - nvm list
+  - nvm ls-remote
+  - nvm install 5.10.1
+  - nvm use 5.10.1
+  - nvm alias default 5.10.1
+  - node -v
+  - npm install -g npm
+  - npm -v
 before_script:
   - node -v
   - npm install 
