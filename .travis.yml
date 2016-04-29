@@ -18,5 +18,5 @@ before_script:
   - node -v
   - npm install 
 script:
-  - gulp dnx-web
+  - gulp run-client-test
   
