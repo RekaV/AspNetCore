@@ -17,7 +17,8 @@ install:
   - curl -sSL https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.sh | DNX_BRANCH=dev sh && source ~/.dnx/dnvm/dnvm.sh
   - dnvm upgrade
   - dnu restore
-  - sudo apt-get update && sudo apt-get upgrade 
+  - sudo apt-get remove corebird
+  - sudo apt-get -f install
    - curl -sSL https://github.com/libuv/libuv/archive/v1.4.2.tar.gz | tar zxfv - -C /tmp && cd /tmp/libuv-1.4.2/
   - sh autogen.sh
   - ./configure --prefix=$HOME/libuvinstall
