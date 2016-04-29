@@ -3,6 +3,8 @@ mono:
   - latest
 addons:
   apt:
+    sources:
+      - debian-sid
     packages:
     - gettext
     - libcurl4-openssl-dev
