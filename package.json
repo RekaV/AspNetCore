@@ -1,6 +1,10 @@
 {
   "name": "ASP.NET",
   "version": "0.0.0",
+   "repository": {
+    "type": "git",
+    "url": "https://github.com/npm/npm.git"
+  },
   "scripts": {
     "test": "karma start karma.conf.js"
    },
