@@ -1,1 +1,14 @@
-
+version: 1.0.{build}
+cache: C:\Users\appveyor\.dnx\packages
+before_build:
+- cmd: dnu restore
+build_script:
+- cmd: dnu build
+test_script:
+- cmd: dnx test
+build:
+  verbosity: normal
+#after_build:
+#- cmd: echo "Website is running"
+#- dnx web
+#- cmd: curl http://localhost:5000/api/contacts
